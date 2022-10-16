@@ -36,8 +36,8 @@ subs = ['CryptoCurrency']  # sub-reddit to search
 submission_name = 'UNRELIABLE SOURCE'  # posts title to search
 goodAuth = {'AutoModerator'}  # authors whom comments are allowed more than once
 uniqueCmt = True  # allow one comment per author per symbol
-ignoreAuthP = {'example'}  # authors to ignore for posts
-ignoreAuthC = {'example'}  # authors to ignore for comment
+# ignoreAuthP = {'example'}  # authors to ignore for posts
+# ignoreAuthC = {'example'}  # authors to ignore for comment
 upvoteRatio = 0.70  # upvote ratio for post to be considered, 0.70 = 70%
 ups = 20  # define # of upvotes, post is considered if upvotes exceed this #
 limit = 1000  # define the limit, comments 'replace more' limit
@@ -94,7 +94,7 @@ for sub in subs:
                 c_analyzed += 1
 
                 # checking: comment upvotes and author
-                if comment.score > upvotes and auth not in ignoreAuthC:
+                if comment.score > upvotes:
                     new_comment = replace_with_ticker(comment.body)
                     split = new_comment.split(" ")
                     for word in split:
@@ -155,8 +155,8 @@ vader.lexicon.update(new_words)
 
 picks_sentiment = list(symbols.keys())
 for symbol in picks_sentiment:
-    stock_comments = a_comments[symbol]
-    for cmnt in stock_comments:
+    crypto_comments = a_comments[symbol]
+    for cmnt in crypto_comments:
         score = vader.polarity_scores(cmnt)
         if symbol in s:
             s[symbol][cmnt] = score
