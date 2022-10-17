@@ -38,7 +38,7 @@ headers = {
 def analysis(crypto: str):
     actual_price_list = []
     predictions = pd.read_csv(
-        f'C:/Users/Hamza/PycharmProjects/dissertation_project/stage_3/predictions/{crypto}_7_day_model_prediction.csv')
+        f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_1/datasets/{crypto}/{crypto}_7_day_model_prediction.csv')
     for date in dates:
         url = return_url(crypto, date)
         response = requests.get(url, headers=headers)
@@ -103,7 +103,7 @@ def analysis(crypto: str):
     plt.legend()
     plt.title(f"eth predicted values and actual values line")
     plt.xticks(fontsize=5)
-    plt.yticks(fontsize=5)
+    plt.yticks(fontsize=6)
     plt.xlabel('days')
     plt.ylabel('dollars ($)')
     plt.savefig(f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_3/{crypto}/predicted_vs_actual.png')
