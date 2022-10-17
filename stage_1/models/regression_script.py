@@ -36,6 +36,8 @@ def model(crypto: str):
     response = requests.get(url, headers=headers)
     data = json.loads(response.text)
 
+    print(f"response after query \n\n {data} \n\n")
+
     df_json = response.json()
     df = pd.DataFrame.from_dict(df_json)
 
@@ -52,12 +54,15 @@ def model(crypto: str):
     df_converted['time_close'] = df_converted['time_close'].str.split('T').str.get(1)
     df_converted['time_close'] = df_converted['time_close'].str.replace('Z', '')
 
-    df_converted.to_csv(f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_1/datasets/{crypto}_original'
-                        f'.csv', encoding='utf-8', index=False)
+    df_converted.to_csv(
+        f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_1/datasets/{crypto}/{crypto}_original.csv',
+        encoding='utf-8', index=False)
 
     df_converted['prediction_7_days'] = df_converted[['price_close']].shift(-projection)
 
-    df_converted.to_csv(f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_1/datasets/{crypto}_prediction.csv', encoding='utf-8', index=False)
+    df_converted.to_csv(
+        f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_1/datasets/{crypto}/{crypto}_prediction.csv',
+        encoding='utf-8', index=False)
 
     X = np.array(df_converted.iloc[:, [False, False, False, True, True, True, True, True, True, False, False, False]])
     X = X[:-projection]
@@ -67,12 +72,19 @@ def model(crypto: str):
     lin_reg = LinearRegression()
     lin_reg.fit(X_train, y_train)
     lin_reg_confidence = lin_reg.score(X_test, y_test)
+
+    print(f"model score calculated - {lin_reg_confidence * 100}%")
+
     x_projection = np.array(
         df_converted.iloc[:, [False, False, False, True, True, True, True, True, True, False, False, False]])[
                    -projection:]
     lin_reg_prediction = lin_reg.predict(x_projection)
     df_pred = pd.DataFrame({'date': dates, 'predicted_price_close': lin_reg_prediction})
 
-    df_pred.to_csv(f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_1/datasets/{crypto}_7_day_model_prediction.csv', encoding='utf-8', index=False)
+    df_pred.to_csv(
+        f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_1/datasets/{crypto}/'
+        f'{crypto}_7_day_model_prediction.csv', encoding='utf-8', index=False)
 
     end_time = (time.time() - start_time)
+
+    print(f"regression script complete - time elapsed {end_time}")
