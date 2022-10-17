@@ -2,7 +2,6 @@ import json
 import numpy as np
 import pandas as pd
 import requests
-import base64
 import time
 
 from sklearn.linear_model import LinearRegression
@@ -16,8 +15,12 @@ list_of_urls = {
     "usdt": 'https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_USDT_USD/history?period_id=1DAY&time_start=2022-01-11T00:00:00&limit=500'
 }
 
-encrypted_api_key = 'QUU3NUIxODMtM0M3RC00REQ1LTgxRDYtNjdDRDgzODYzOTVG'
+# api_key = 'AE75B183-3C7D-4DD5-81D6-67CD8386395F'
+# api_key = 'B6A54D76-BCD6-45AE-9F5E-E87536D4255C'
+api_key = 'B7843BD3-39AB-4D68-87EF-4C6D988627E7'
+
 projection = 7
+
 dates = ['2022-10-05', '2022-10-06', '2022-10-07', '2022-10-08', '2022-10-09', '2022-10-10', '2022-10-11']
 
 
@@ -26,11 +29,8 @@ def model(crypto: str):
 
     url = list_of_urls[crypto]
 
-    base64_bytes = base64.b64encode(encrypted_api_key)
-    base64_decrypted_api_key = base64_bytes.decode("ascii")
-
     headers = {
-        'X-CoinAPI-Key': base64_decrypted_api_key
+        'X-CoinAPI-Key': api_key
     }
 
     response = requests.get(url, headers=headers)
@@ -52,11 +52,12 @@ def model(crypto: str):
     df_converted['time_close'] = df_converted['time_close'].str.split('T').str.get(1)
     df_converted['time_close'] = df_converted['time_close'].str.replace('Z', '')
 
-    df_converted.to_csv(f'{crypto}_original.csv', encoding='utf-8', index=False)
+    df_converted.to_csv(f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_1/datasets/{crypto}_original'
+                        f'.csv', encoding='utf-8', index=False)
 
     df_converted['prediction_7_days'] = df_converted[['price_close']].shift(-projection)
 
-    df_converted.to_csv(f'{crypto}_prediction.csv', encoding='utf-8', index=False)
+    df_converted.to_csv(f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_1/datasets/{crypto}_prediction.csv', encoding='utf-8', index=False)
 
     X = np.array(df_converted.iloc[:, [False, False, False, True, True, True, True, True, True, False, False, False]])
     X = X[:-projection]
@@ -72,6 +73,6 @@ def model(crypto: str):
     lin_reg_prediction = lin_reg.predict(x_projection)
     df_pred = pd.DataFrame({'date': dates, 'predicted_price_close': lin_reg_prediction})
 
-    df_pred.to_csv(f'{crypto}_7_day_model_prediction.csv', encoding='utf-8', index=False)
+    df_pred.to_csv(f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_1/datasets/{crypto}_7_day_model_prediction.csv', encoding='utf-8', index=False)
 
     end_time = (time.time() - start_time)
