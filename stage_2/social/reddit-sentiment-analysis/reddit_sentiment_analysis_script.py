@@ -196,4 +196,3 @@ df.plot(kind='bar', color=colors, title=f"sentiment analysis on reddit - {today}
 plt.legend(loc='best')
 plt.savefig(f'C:/Users/Hamza/PycharmProjects/dissertation_project/data/stage_2/{today}/reddit/sentiment.png')
 plt.show()
-
