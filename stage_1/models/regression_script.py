@@ -12,7 +12,9 @@ list_of_urls = {
     "btc": 'https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_BTC_USD/history?period_id=1DAY&time_start=2022-01-11T00:00:00&limit=500',
     "eth": 'https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_ETH_USD/history?period_id=1DAY&time_start=2022-01-11T00:00:00&limit=500',
     "ada": 'https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_ADA_USD/history?period_id=1DAY&time_start=2022-01-11T00:00:00&limit=500',
-    "usdt": 'https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_USDT_USD/history?period_id=1DAY&time_start=2022-01-11T00:00:00&limit=500'
+    "usdt": 'https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_USDT_USD/history?period_id=1DAY&time_start=2022-01-11T00:00:00&limit=500',
+    "usdc": 'https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_USDC_USD/history?period_id=1DAY&time_start=2022-01-11T00:00:00&limit=500'
+
 }
 
 # api_key = 'AE75B183-3C7D-4DD5-81D6-67CD8386395F'
