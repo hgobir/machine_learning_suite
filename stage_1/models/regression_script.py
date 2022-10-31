@@ -5,7 +5,7 @@ This program uses data from CoinAPI to create ML model and make predictions 7 da
 Important: remember to amend dates variable accordingly
 
 Authentication: Please create own CoinAPI key id and set it to api_key variable below
-or use hamza's personal CoinAPI key listed on Chapter 7.1 Personal API Keys section of thesis
+or use hamza's personal CoinAPI key listed on Chapter 7.1 Personal Authentication Details section of thesis
 -------------------------------------------------------------------
 ****************************************************************************"""
 

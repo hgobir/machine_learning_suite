@@ -3,7 +3,7 @@ Purpose: To analyze the sentiments of the reddit
 This program uses Vader SentimentIntensityAnalyzer to calculate sentiment.
 
 Authentication: Please create own reddit client id and secret and set to client_id and client_secret variables below
-or use hamza's personal reddit client id and client secret listed on Chapter 7.1 Personal API Keys section of thesis
+or use hamza's personal reddit client id and client secret listed on Chapter 7.1 Personal Authentication Details section of thesis
 -------------------------------------------------------------------
 ****************************************************************************"""
 from datetime import date
