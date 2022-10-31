@@ -5,7 +5,7 @@ This program uses Vader SentimentIntensityAnalyzer and TextBlob to calculate sen
 Authentication: Please create own twitter client id, client secret, bearer token, access token and access token secret
 and set these to client_id, client_secret, bearer_token, access_token and access_token_secret variables respectively
 or use hamza's personal twitter client id, twitter client secret, twitter bearer token, twitter access token and
-twitter access token secret listed on Chapter 7.1 Personal API Keys section of thesis
+twitter access token secret listed on Chapter 7.1 Personal Authentication Details section of thesis
 -------------------------------------------------------------------
 ****************************************************************************"""
 from datetime import date
