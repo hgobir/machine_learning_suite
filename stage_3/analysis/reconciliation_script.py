@@ -1,12 +1,22 @@
+"""*****************************************************************************
+Purpose: Reconciles prediction price values and actual price values
+This program uses data from CoinAPI to get actual price data for 7 day prediction window and calculates % error
+
+Important: remember to amend dates variable accordingly
+
+Authentication: Please create own CoinAPI key id and set it to api_key variable below
+or use hamza's personal CoinAPI key listed on Chapter 7.1 Personal API Keys section of thesis
+-------------------------------------------------------------------
+****************************************************************************"""
+
 import json
 import pandas as pd
 import requests
 from matplotlib.ticker import FormatStrFormatter
 from matplotlib import pyplot as plt
 
-# api_key = 'AE75B183-3C7D-4DD5-81D6-67CD8386395F'
-# api_key = 'B6A54D76-BCD6-45AE-9F5E-E87536D4255C'
-api_key = 'B7843BD3-39AB-4D68-87EF-4C6D988627E7'
+# Authentication - see documentation top of file
+api_key = ''
 
 dates = ['2022-10-05', '2022-10-06', '2022-10-07', '2022-10-08', '2022-10-09', '2022-10-10', '2022-10-11']
 
