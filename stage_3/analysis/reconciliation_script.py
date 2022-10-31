@@ -85,7 +85,7 @@ def analysis(crypto: str):
 
     plt.plot(dates, percent_error_list, color="red", label="percent error")
     plt.legend()
-    plt.title(f"{crypto} percentage error comparing predicted values to actual values")
+    plt.title(f"${crypto} percentage error")
     plt.xticks(fontsize=5)
     plt.xlabel('days')
     plt.ylabel('percent (%)')
@@ -97,11 +97,11 @@ def analysis(crypto: str):
 
     fig, ax = plt.subplots()
     ax.yaxis.set_major_formatter(FormatStrFormatter('%.4f'))
-    plt.plot(dates, new_actual_list, color="orange", label="actual values")
-    plt.plot(dates, new_prediction_list, color='blue', label="predicted values")
+    plt.plot(dates, new_actual_list, color="orange", label="actual")
+    plt.plot(dates, new_prediction_list, color='blue', label="predicted")
 
     plt.legend()
-    plt.title(f"eth predicted values and actual values line")
+    plt.title(f"${crypto} predicted vs actual")
     plt.xticks(fontsize=5)
     plt.yticks(fontsize=6)
     plt.xlabel('days')
