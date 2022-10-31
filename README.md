@@ -15,10 +15,10 @@ The aim of this project is to demonstrate the viability of Machine Learning with
 suite is split into 3 stages that have to run consecutively which is very important;
 
 - stage 1 is run
-- stage 2 is run for the next 7 consecutive days
-- stage 3 is run after
+- stage 2 is run for the next 7 consecutive days after stage 1
+- stage 3 is run after stage 2
 
-total suite is meant to take 9 days to complete
+project is meant to take 9 days to complete
 
 decide beforehand what day you want stage 1 to run on then once you have done this update the dates list in regression_script.py and reconciliation_script.py with the next 7 days after planned stage 1 run using 'yyyy-mm-dd' format since this is the format coinapi needs to make requests
 
@@ -30,17 +30,19 @@ remember to update dates list variable in both regression_script.py and reconcil
 
 
 
-Prerequisites
+## Prerequisites
 
 - python 3.8
 - pycharm
 - internet access
+- API keys and Authentication details from CoinAPI, Twitter and Reddit (if not using hamza's details)
 
 
 
-Steps
+## Steps
 
 - clone repository into local pycharm ide
+- either add authentication details or use hamza's authentication details located on dissertation
 - ensure dependencies have compiled and modules are available
 - decide what day stage 1 should run then update dates variable in regression_script.py and reconciliation_script.py accordingly
 - enter crypto from list into stage_1/models/main.py - this runs the model method in the regression_script.py

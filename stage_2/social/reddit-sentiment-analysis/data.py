@@ -1,4 +1,3 @@
-# all crypto tickers from coingecko
 crypto = {'ETH', 'BTC', 'USDT', 'ADA', 'GLMR'}
 
 # includes common words and words used on crypto reddit that are also crypto names

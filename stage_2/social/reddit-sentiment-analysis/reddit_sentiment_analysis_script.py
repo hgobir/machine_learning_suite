@@ -1,19 +1,14 @@
-'''*****************************************************************************
+"""*****************************************************************************
 Purpose: To analyze the sentiments of the reddit
-This program uses Vader SentimentIntensityAnalyzer to calculate the ticker compound value.
-You can change multiple parameters to suit your needs. See below under "set program parameters."
-Implementation:
-I am using sets for 'x in s' comparison, sets time complexity for "x in s" is O(1) compare to list: O(n).
-Limitations:
-It depends mainly on the defined parameters for current implementation:
-It completely ignores the heavily downvoted comments, and there can be a time when
-the most mentioned ticker is heavily downvoted, but you can change that in upvotes variable.
+This program uses Vader SentimentIntensityAnalyzer to calculate sentiment.
+
+Authentication: Please create own reddit client id and secret and set to client_id and client_secret variables below
+or use hamza's personal reddit client id and client secret listed on Chapter 7.1 Personal API Keys section of thesis
 -------------------------------------------------------------------
-****************************************************************************'''
+****************************************************************************"""
 from datetime import date
 import praw
 import re
-import os
 from data import *
 import time
 import pandas as pd
@@ -24,26 +19,23 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 start_time = time.time()
 today = date.today()
 
+# Authentication - see documentation top of file
 reddit = praw.Reddit(
     user_agent='Comment Extraction',
-    client_id='m-1u4PKqu-quQ1dzglQMfA',
-    client_secret='LjmuZFBmd6sM_F066HT2W6jH6ibaoQ'
+    client_id='',
+    client_secret=''
 )
 
-'''############################################################################'''
 # set the program parameters
 subs = ['CryptoCurrency']  # sub-reddit to search
 submission_name = 'UNRELIABLE SOURCE'  # posts title to search
 goodAuth = {'AutoModerator'}  # authors whom comments are allowed more than once
 uniqueCmt = True  # allow one comment per author per symbol
-# ignoreAuthP = {'example'}  # authors to ignore for posts
-# ignoreAuthC = {'example'}  # authors to ignore for comment
 upvoteRatio = 0.70  # upvote ratio for post to be considered, 0.70 = 70%
 ups = 20  # define # of upvotes, post is considered if upvotes exceed this #
 limit = 1000  # define the limit, comments 'replace more' limit
 upvotes = 2  # define # of upvotes, comment is considered if upvotes exceed this #
 path = "C:/Users/Hamza/PycharmProjects/dissertation_project/"
-'''############################################################################'''
 
 posts, count, c_analyzed, tickers, titles, a_comments = 0, 0, 0, {}, [], {}
 cmt_auth = {}

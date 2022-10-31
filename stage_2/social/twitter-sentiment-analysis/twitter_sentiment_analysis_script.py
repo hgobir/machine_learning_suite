@@ -1,12 +1,19 @@
-# subjectivity is float between 0-1 where 0 is very objective and 1 is very subjective
-# polarity is float between -1 and 1 with -1 being negative sentiment and 1 being positive sentiment
+"""*****************************************************************************
+Purpose: To analyze the sentiments of the twitter
+This program uses Vader SentimentIntensityAnalyzer and TextBlob to calculate sentiment.
+
+Authentication: Please create own twitter client id, client secret, bearer token, access token and access token secret
+and set these to client_id, client_secret, bearer_token, access_token and access_token_secret variables respectively
+or use hamza's personal twitter client id, twitter client secret, twitter bearer token, twitter access token and
+twitter access token secret listed on Chapter 7.1 Personal API Keys section of thesis
+-------------------------------------------------------------------
+****************************************************************************"""
 from datetime import date
 import time
 import pandas as pd
 import matplotlib.pyplot as plt
 from textblob import TextBlob
 import tweepy
-import numpy as np
 import re
 import string
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
@@ -18,12 +25,12 @@ plt.style.use('fivethirtyeight')
 start_time = time.time()
 today = date.today()
 
-# Authentication
-client_id = '2Q4H1OppVBLvIZN8ouaSwHX7C'
-client_secret = 'iA2KuGZ0e45karZnhJM7CwoUMdP9WJAJkk4fVDxOPF4xhHoR57'
-bearer_token = 'AAAAAAAAAAAAAAAAAAAAAH%2BRggEAAAAA8EJy8OPPNrGBoA9nHx%2FDK%2BuIh2E%3Dpz6Cf3L6S8T00WDQyLcrFwkd3g0My8KN1eOvpeaWH1mfcCzEP8'
-access_token = '959309679275814917-7EhjFUUjPNz1IbSTrK7T3VPA4LW8Zhb'
-access_token_secret = 'kaNDmQkYR1nqpXmuw8q2dvbbVZQ0u6gPJ4Ky0m2KaKAQa'
+# Authentication - see documentation top of file
+client_id = ''
+client_secret = ''
+bearer_token = ''
+access_token = ''
+access_token_secret = ''
 
 positive = 0
 negative = 0
@@ -72,6 +79,8 @@ def clean_tweet_function(tweet):
     final_clean_tweet = clean_tweet.translate(str.maketrans('', '', string.punctuation))  # removes punctuation
     return final_clean_tweet.strip()
 
+# subjectivity is float between 0-1 where 0 is very objective and 1 is very subjective
+# polarity is float between -1 and 1 with -1 being negative sentiment and 1 being positive sentiment
 
 # subjectivity ranges from 0 (very subjective) to 1 (very objective)
 def get_subjectivity(tweet):
@@ -252,7 +261,7 @@ for search_param in search_terms:
 
     tweet_list, neutral_list, negative_list, positive_list = [], [], [], []
 
-#
+
 time = (time.time() - start_time)
 
 print(f"Took {time} seconds")

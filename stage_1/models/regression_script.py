@@ -1,3 +1,14 @@
+"""*****************************************************************************
+Purpose: Creates Multiple Linear Regression Model
+This program uses data from CoinAPI to create ML model and make predictions 7 days in future
+
+Important: remember to amend dates variable accordingly
+
+Authentication: Please create own CoinAPI key id and set it to api_key variable below
+or use hamza's personal CoinAPI key listed on Chapter 7.1 Personal API Keys section of thesis
+-------------------------------------------------------------------
+****************************************************************************"""
+
 import json
 import numpy as np
 import pandas as pd
@@ -17,9 +28,8 @@ list_of_urls = {
 
 }
 
-# api_key = 'AE75B183-3C7D-4DD5-81D6-67CD8386395F'
-# api_key = 'B6A54D76-BCD6-45AE-9F5E-E87536D4255C'
-api_key = 'B7843BD3-39AB-4D68-87EF-4C6D988627E7'
+# Authentication - see documentation top of file
+api_key = ''
 
 projection = 7
 
